@@ -1,0 +1,14 @@
+Function fnRecursiveFactorial(iParameter):
+    If iParameter equals 1:
+        Return 1
+    End If
+    Return iParameter multiplied by fnRecursiveFactorial(iParameter - 1)
+End Function
+
+Function fnRecursiveFibonacchiSequence(baseTerms, firstTerm, secondTerm, currentCount):
+    If currentCount is greater than baseTerms:
+        Return
+    End If
+    Print firstTerm
+    Call fnRecursiveFibonacchiSequence(baseTerms, secondTerm, firstTerm + secondTerm, currentCount + 1)
+End Function

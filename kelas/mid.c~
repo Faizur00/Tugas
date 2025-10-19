@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int iBiayaGedung = 200000;
+    int iBiayaKursi = 20000;
+
+    char sNama[100];
+    char sTanggal[100];
+    int iJumlahKursi;
+
+    printf("masukkan nama:  ");
+    scanf("%s", &sNama[0]);
+    printf("masukkan tanggal:  ");
+    scanf("%s", &   sTanggal[0]);
+    printf("Masukkan jumlah kursi pesanan:  ");
+    scanf("%i", &iJumlahKursi);
+
+    if (iJumlahKursi > 500){
+        iBiayaKursi = iBiayaKursi + ((iJumlahKursi - 500) * 100);
+    }
+    else if (iJumlahKursi > 200) {
+        iBiayaKursi = iBiayaKursi + ((iJumlahKursi - 200) * 200);
+    }
+
+
+    printf("NAMA PENYEWA: %s \n TANGGAL SEWA: %s \n TOTAL KURSI PESANAN: %i \n TOTAL BIAYA: Rp %i \n ",sNama, sTanggal, iJumlahKursi, iBiayaGedung+iBiayaKursi);
+
+
+    return 0;
+}

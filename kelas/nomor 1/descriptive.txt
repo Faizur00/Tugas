@@ -1,0 +1,16 @@
+Algoritma: Pencarian nomor telpon berdasarkan alamat dengan pelayanan lokal
+
+1. Mulai program.
+2. Tetapkan nomor layanan ke 108.
+3. Pengguna menghubungi nomor layanan.
+4. Jika nomor layanan tidak sibuk:
+    a. Pengguna memasukkan nama dan nomor alamat.
+    b. Layanan mencari nomor sesuai masukan pengguna.
+    c. Jika alamat memiliki nomor telepon:
+        i. Layanan memberikan nomor kepada pengguna.
+    d. Jika tidak:
+        i. Layanan memberitahu bahwa alamat tidak memiliki nomor.
+5. Jika nomor layanan sibuk:
+    a. Pemberitahuan sibuk muncul.
+6. Sambungan diputus.
+7. Program selesai.

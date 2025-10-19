@@ -1,0 +1,190 @@
+
+# Tugas 2
+
+## Nomor 1
+
+### Descriptive Text
+Algoritma: Pencarian nomor telpon berdasarkan alamat dengan pelayanan lokal
+
+1. Mulai program.
+2. Tetapkan nomor layanan ke 108.
+3. Pengguna menghubungi nomor layanan.
+4. Jika nomor layanan tidak sibuk:
+    a. Pengguna memasukkan nama dan nomor alamat.
+    b. Layanan mencari nomor sesuai masukan pengguna.
+    c. Jika alamat memiliki nomor telepon:
+        i. Layanan memberikan nomor kepada pengguna.
+    d. Jika tidak:
+        i. Layanan memberitahu bahwa alamat tidak memiliki nomor.
+5. Jika nomor layanan sibuk:
+    a. Pemberitahuan sibuk muncul.
+6. Sambungan diputus.
+7. Program selesai.
+
+### Pseudocode
+```
+Algoritma: Pencarian nomor telpon berdasarkan alamat dengan pelayanan lokal
+BEGIN
+    NOMOR LAYANAN = 108
+    PENGGUNA MENGHUBUNGI NOMOR LAYANAN
+
+    IF (NOMOR LAYANAN != SIBUK) DO:
+        PENGGUNA MEMASUKKAN NAMA DAN NOMOR ALAMAT
+        LAYANAN MENCARI NOMOR SESUAI MASUKAN PENGGUNA
+            IF (ALAMAT PUNYA NO TELPON) DO:
+                LAYANAN MEMBERI NOMOR KEPADA PENGGUNA
+            ELSE
+                LAYANAN MEMBERITAHU BAHWA ALAMAT TIDAK MEMILIKI NOMOR
+    ELSE
+        PEMBERITAHUAN SIBUK MUNCUL
+
+    SAMBUNGAN DIPUTUS
+END
+```
+
+### Source Code
+```c
+#include <stdio.h>
+
+void cari_nomor_telepon(char alamat[]) \
+{
+    int nomor_108_sibuk = 0;
+    int alamat_terdaftar = 1;
+
+    if (nomor_108_sibuk) {
+        printf("Nomor 108 sibuk. Coba lagi nanti.\n");
+    } else {
+        printf("Terhubung ke nomor 108 PT Telkom.\n");
+        if (alamat_terdaftar) {
+            printf("Nomor telepon untuk alamat %s adalah 08123456789.\n", alamat);
+        } else {
+            printf("Alamat %s belum memiliki sambungan telepon.\n", alamat);
+        }
+    }
+}
+
+int main(void) 
+{
+    char alamat[100];
+    printf("Masukkan alamat rumah (nama jalan dan nomor rumah): ");
+    fgets(alamat, sizeof(alamat), stdin);
+
+    int i = 0;
+    while (alamat[i] != '\n' && alamat[i] != '\0') {
+        i++;
+    }
+    alamat[i] = '\0';
+
+    cari_nomor_telepon(alamat);
+    return 0;
+}
+```
+
+## Nomor 2
+
+### Flowchart
+```drawio
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="26.0.16">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1095" dy="1143" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-0" value="Start" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="159" y="60" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-2" value="Input variable&lt;div&gt;Angka&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="154" y="380" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-3" target="A8bEqmKdppgVQUGWmIFX-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-24" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="A8bEqmKdppgVQUGWmIFX-14">
+          <mxGeometry x="-0.3298" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-3" target="A8bEqmKdppgVQUGWmIFX-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-25" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="A8bEqmKdppgVQUGWmIFX-15">
+          <mxGeometry x="-0.4438" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-3" value="if(Angka &amp;gt; 0)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="159" y="540" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-4" value="print(&quot;angka merupakan bilangan positif&quot;)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="149" y="710" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-5" target="A8bEqmKdppgVQUGWmIFX-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-26" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="A8bEqmKdppgVQUGWmIFX-16">
+          <mxGeometry x="-0.2476" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-5" target="A8bEqmKdppgVQUGWmIFX-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-27" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="A8bEqmKdppgVQUGWmIFX-17">
+          <mxGeometry x="-0.6702" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-5" value="else if(Angka &amp;lt; 0)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="359" y="540" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-6" target="A8bEqmKdppgVQUGWmIFX-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="419" y="840" />
+              <mxPoint x="359" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-6" value="print(&quot;angka merupakan bilangan negatif&quot;)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="349" y="740" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-8" target="A8bEqmKdppgVQUGWmIFX-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="609" y="945" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-8" value="print(&quot;angka merupakan bilangan 0&quot;)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="539" y="800" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-9" value="Int Angka" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="159" y="220" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-0" target="A8bEqmKdppgVQUGWmIFX-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="219" y="200" as="sourcePoint" />
+            <mxPoint x="269" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-9" target="A8bEqmKdppgVQUGWmIFX-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="269" y="340" as="sourcePoint" />
+            <mxPoint x="319" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-2" target="A8bEqmKdppgVQUGWmIFX-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="239" y="540" as="sourcePoint" />
+            <mxPoint x="289" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-19" value="End" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="299" y="910" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="A8bEqmKdppgVQUGWmIFX-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="A8bEqmKdppgVQUGWmIFX-4" target="A8bEqmKdppgVQUGWmIFX-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="219" y="960" />
+              <mxPoint x="220" y="960" />
+              <mxPoint x="220" y="970"
