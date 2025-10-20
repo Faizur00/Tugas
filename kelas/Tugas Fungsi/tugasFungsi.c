@@ -23,12 +23,12 @@ int fnUserMenu(void)
     int iPilihan = -1;
 
     printf("\n============================\n");
-    printf("        🏧 ATM Sederhana       \n");
+    printf("              ATM                 \n");
     printf("============================\n");
-    printf("[1] 💰 Cek Saldo\n");
-    printf("[2] 💵 Tarik Tunai\n");
-    printf("[3] 🏦 Setor Tunai\n");
-    printf("[0] 🚪 Keluar\n");
+    printf("[1] Cek Saldo\n");
+    printf("[2] Tarik Tunai\n");
+    printf("[3] Setor Tunai\n");
+    printf("[0] Keluar\n");
     printf("============================\n");
     printf("Pilih menu: ");
 
@@ -143,3 +143,4 @@ int main(void)
     }
     return 0;
 }
+
