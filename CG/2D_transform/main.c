@@ -10,6 +10,9 @@
 
 #include "transform.h"
 
+// cosf and sinf take radians. The input code counts degrees.
+#define DEG_TO_RAD 0.01745329252f
+
 typedef struct{
     GLuint vao;
     GLuint vbo;
@@ -110,6 +113,8 @@ int main(void){
     float angle = 0.0f;
     float sx = 1.0f;
     float sy = 1.0f;
+    float shx = 0.0f;
+    float shy = 0.0f;
 
     // main applicaiton window loop
     // so this thing kinda like the loopthing on iot and game dev
@@ -131,28 +136,68 @@ int main(void){
              ty -= 0.01f;
         }
         if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS){
-            angle = angle + 30.0;
+            angle = angle + 30.0f;
         }
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS &&
-            glfwGetKey(window, GLFW_KEY_MINUS)){
-                sx = sx - 0.01f;
-                sy = sx - 0.01f;
+            glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS){
+                sx -= 0.01f;
+                sy -= 0.01f;
         }
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS &&
-            glfwGetKey(window, GLFW_KEY_EQUAL)){
-                sx = sx + 0.01f;
-                sy = sx + 0.01f;
+            glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS){
+                sx += 0.01f;
+                sy += 0.01f;
+        }
+        if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS &&
+            glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS){
+                shx -= 0.01f;
+        }
+        if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS &&
+            glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS){
+                shx += 0.01f;
+        }
+        if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS &&
+            glfwGetKey(window, GLFW_KEY_MINUS) == GLFW_PRESS){
+                shy -= 0.01f;
+        }
+        if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS &&
+            glfwGetKey(window, GLFW_KEY_EQUAL) == GLFW_PRESS){
+                shy += 0.01f;
         }
 
+         // shear_x slides x by an amount of y, shear_y slides y by an amount of x
+         Mat3 shear_x_mat = shear_x(shx);
+         Mat3 shear_y_mat = shear_y(shy);
+         Mat3 shearing = mat3_mul(shear_y_mat, shear_x_mat);
+
          Mat3 scaling = scale(sx, sy);
-         Mat3 rotating = rotate(angle);
+         Mat3 rotating = rotate(angle * DEG_TO_RAD);
          Mat3 translation = translate(tx, ty);
+
+         // the reflect functions flip, so hold the key to apply one
+         Mat3 reflecting = mat3_identity();
+
+         if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS){
+             reflecting = mat3_mul(reflecting, reflect_x());
+         }
+         if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS){
+             reflecting = mat3_mul(reflecting, reflect_y());
+         }
+         if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS){
+             reflecting = mat3_mul(reflecting, reflect_origin());
+         }
 
          Mat3 transform_mat = 
              mat3_mul(
-                 translation,
+                 reflecting,
                  mat3_mul(
-                     rotating, scaling
+                     translation,
+                     mat3_mul(
+                         rotating,
+                         mat3_mul(
+                             scaling, shearing
+                         )
+                     )
                  )
              );
         
